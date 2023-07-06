@@ -46,12 +46,7 @@ def adscraping(classname):
     try:
         print(classname)
         # イメージ取得
-        # ads = browser.find_elements_by_xpath("//div[contains(@class, '{}') ]".format(classname))
-        # ads = browser.find_elements_by_xpath("//div[contains(@id,'imobile')]")
-        # ads = browser.find_elements_by_xpath("//iframe[contains(@id,'imobile') or contains(@id, 'ads')]")
-        # ads = browser.find_elements_by_css_selector("iframe")
         ads = browser.find_elements_by_xpath("//div/*[contains(@id,'imobile')or contains(@class,'article_bodyfooter') or contains(@id,'adunit') or contains(@id,'google-') or contains(@class, 'google') or contains(@class,'adsbox') or contains(@id, 'ad_unit') or contains(@class, 'side-ad') or contains(@id, 'ads') or contains(@class, 'ad0')  or contains(@class, 'admid') or @iframe or contains(. ,'Sponsored') and @data-item-id  ]")
-        #　LOL忍者の単語含め系広告取得用　
         # ads = browser.find_elements_by_xpath("//*[contains(., 'Sponsored') and @data-item-id]")
         if ads:
             # ランダムなイメージを取得
@@ -78,22 +73,6 @@ def adscraping(classname):
     except InvalidSelectorException:
         print("ERROR!!!")
 
-    # else:
-    #     if ads:
-    #         normals = random.sample(randomimg, 3)
-    #         for normal in normals:
-    #             size = normal.size
-    #             w, h = size['width'], size['height']
-    #             if w < 50:
-    #                 continue
-    #             elif h < 50:
-    #                 continue
-    #             else:
-    #                 png = normal.screenshot_as_png
-    #                 with open('G:/img/normal{}.png'.format(time.time()), 'wb') as f:
-    #                     f.write(png)
-
-
 
 def ender():
     browser.close()
@@ -104,7 +83,6 @@ def quiter():
 #アクセスするサイトを指定
 site = pd.read_csv("../site.csv")
 sites = list(site['name'])
-# sites = ['https://lolninja.net/']
 
 def scrapingmachine():
     for i in range(len(sites)):
